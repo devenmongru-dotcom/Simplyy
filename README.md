@@ -1,0 +1,55 @@
+# Simplyy Website
+
+A modern React marketing site for Simplyy — digital growth for local businesses.
+
+## Quick Start
+
+```bash
+npm install
+npm run dev
+```
+
+Then open [http://localhost:5173](http://localhost:5173).
+
+## Project Structure
+
+```
+simplyy/
+├── index.html
+├── package.json
+├── vite.config.js
+└── src/
+    ├── main.jsx            # React entry point
+    ├── App.jsx             # Root app + routing
+    ├── components/
+    │   ├── Nav.jsx         # Top navigation bar
+    │   ├── Footer.jsx      # Site footer
+    │   ├── SimplyLogo.jsx  # SVG logo + wordmark
+    │   ├── Counter.jsx     # Animated number counter
+    │   └── Reveal.jsx      # Scroll-triggered fade-in
+    ├── pages/
+    │   ├── HomePage.jsx    # Hero, testimonials, services, CTA
+    │   ├── PackagesPage.jsx# Pricing plans
+    │   ├── AboutPage.jsx   # Mission, stats, core values
+    │   ├── ProcessPage.jsx # 6-step process timeline
+    │   ├── FAQsPage.jsx    # Accordion FAQ
+    │   └── ContactPage.jsx # Contact form
+    ├── data/
+    │   └── content.js      # All copy, plans, FAQs, etc.
+    └── styles/
+        ├── colors.js       # Design token constants
+        └── global.css      # CSS reset + font import
+```
+
+## Updating Content
+
+All site copy lives in **`src/data/content.js`** — edit plans, FAQs, testimonials, services, and contact info there without touching any component files.
+
+Colors are centralised in **`src/styles/colors.js`**.
+
+## Build for Production
+
+```bash
+npm run build
+# output in dist/
+```
