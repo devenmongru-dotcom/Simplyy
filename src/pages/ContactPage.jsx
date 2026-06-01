@@ -70,6 +70,38 @@ export default function ContactPage() {
     e.target.style.borderColor = C.border;
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+
+    try {
+      const res = await fetch("https://formspree.io/f/xgoqjoal", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+
+        setForm({
+          name: "",
+          email: "",
+          business: "",
+          message: "",
+          plan: ""
+        });
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch {
+      alert("Network error. Please try again.");
+    }
+  };
+
   return (
     <div style={{ background: C.bgOff }}>
       <section
@@ -80,7 +112,6 @@ export default function ContactPage() {
       >
         <div style={{ maxWidth: 1040, margin: "0 auto" }}>
           <div className="contact-grid">
-
             <Reveal>
               <p style={OL}>Get In Touch</p>
 
@@ -94,7 +125,9 @@ export default function ContactPage() {
               >
                 Let's build something
                 <br />
-                <span style={{ color: C.blue }}>worth talking about.</span>
+                <span style={{ color: C.blue }}>
+                  worth talking about.
+                </span>
               </h1>
 
               <p
@@ -182,7 +215,7 @@ export default function ContactPage() {
                     fontWeight: 600
                   }}
                 >
-                  ✓ Free consultation · No commitment · Reply within 24 hours No Spam
+                  ✓ Free consultation · No commitment · We’ll respond within 24 hours — no spam.
                 </p>
               </div>
             </Reveal>
@@ -220,14 +253,12 @@ export default function ContactPage() {
                       lineHeight: 1.75
                     }}
                   >
-                    We'll be in touch within 24 hours to book your free strategy call.
+                    We’ll respond within 24 hours — no spam.
                   </p>
                 </div>
               ) : (
                 <form
-                  action="https://formspree.io/f/xgoqjoal"
-                  method="POST"
-                  onSubmit={() => setSubmitted(true)}
+                  onSubmit={handleSubmit}
                   style={{
                     background: "#fff",
                     border: `1px solid ${C.border}`,
@@ -349,7 +380,7 @@ export default function ContactPage() {
                       marginTop: 10
                     }}
                   >
-                    No spam. No obligation.
+                    We’ll respond within 24 hours — no spam.
                   </p>
                 </form>
               )}
@@ -360,26 +391,26 @@ export default function ContactPage() {
 
       <style>{`
         .contact-grid {
-          display:grid;
-          grid-template-columns:1fr 1.1fr;
-          gap:64px;
-          align-items:start;
+          display: grid;
+          grid-template-columns: 1fr 1.1fr;
+          gap: 64px;
+          align-items: start;
         }
 
         .form-row {
-          display:grid;
-          grid-template-columns:1fr 1fr;
-          gap:12px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
         }
 
         @media(max-width:780px) {
           .contact-grid {
-            grid-template-columns:1fr;
-            gap:36px;
+            grid-template-columns: 1fr;
+            gap: 36px;
           }
 
           .form-row {
-            grid-template-columns:1fr;
+            grid-template-columns: 1fr;
           }
         }
       `}</style>
