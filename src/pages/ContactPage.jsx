@@ -182,7 +182,7 @@ export default function ContactPage() {
                     fontWeight: 600
                   }}
                 >
-                  ✓ Free consultation · No commitment · Reply within 24 hours
+                  ✓ Free consultation · No commitment · Reply within 24 hours No Spam
                 </p>
               </div>
             </Reveal>
